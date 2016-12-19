@@ -1,0 +1,36 @@
+D:\vs app\android-tool\android-tool\bin\Debug\android-tool.exe.config
+D:\vs app\android-tool\android-tool\bin\Debug\android-tool.exe
+D:\vs app\android-tool\android-tool\bin\Debug\android-tool.pdb
+D:\vs app\android-tool\android-tool\obj\Debug\android_tool.Form1.resources
+D:\vs app\android-tool\android-tool\obj\Debug\android_tool.Properties.Resources.resources
+D:\vs app\android-tool\android-tool\obj\Debug\android-tool.csproj.GenerateResource.Cache
+D:\vs app\android-tool\android-tool\obj\Debug\android-tool.exe
+D:\vs app\android-tool\android-tool\obj\Debug\android-tool.pdb
+D:\vs app\android-tool\android-tool\obj\Debug\android-tool.csprojResolveAssemblyReference.cache
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\app.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\connect.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\default.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\disconnect.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\invert.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\iso.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\keyboard.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\setting.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\upgrade.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\disk.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\fastboot-reboot.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\reboot.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\unlock.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\pictures\watting.png
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\android-tool.exe.config
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\android-tool.exe
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\android-tool.pdb
+C:\Users\o\Documents\android-tool\android-tool\android-tool\bin\Debug\LibUsbDotNet.dll
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android_tool.pictures.ButtonEx.resources
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android_tool.Form1.resources
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android_tool.ProgressEx.resources
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android_tool.Properties.Resources.resources
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android-tool.csproj.GenerateResource.Cache
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android-tool.exe
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android-tool.pdb
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android_tool.FormLog.resources
+C:\Users\o\Documents\android-tool\android-tool\android-tool\obj\Debug\android-tool.csprojResolveAssemblyReference.cache
