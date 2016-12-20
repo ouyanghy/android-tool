@@ -10,7 +10,6 @@ namespace android_tool
     {
         public int ret = -1;
         public String output;
-        public bool result;
 
         public bool getResult()
         {

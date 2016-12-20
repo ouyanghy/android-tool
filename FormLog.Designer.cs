@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLog));
             this.tv = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -40,18 +41,19 @@
             this.tv.Multiline = true;
             this.tv.Name = "tv";
             this.tv.ReadOnly = true;
-            this.tv.Size = new System.Drawing.Size(458, 426);
+            this.tv.Size = new System.Drawing.Size(581, 426);
             this.tv.TabIndex = 0;
             // 
             // FormLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 426);
+            this.ClientSize = new System.Drawing.Size(581, 426);
             this.Controls.Add(this.tv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormLog";
+            this.Text = "日志";
             this.ResumeLayout(false);
             this.PerformLayout();
 

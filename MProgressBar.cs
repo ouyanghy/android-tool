@@ -14,23 +14,23 @@ namespace android_tool
         private Thread mThreadShowProgress;
         private Thread mThreadDismissProgress;
         private static long STEP = 440 * 1024;// 4200bytes/s
-        private  ProgressBar progressBarCur;
-        private  ProgressBar progressBarTotal;
+        private  ProgressBar mProgressBarCur;
+        private  ProgressBar mProgressBarTotal;
+        private ProgressEx mProgressEx;
 
 
-        public MProgressBar(SynchronizationContext syn, ProgressBar cur, ProgressBar total)
+        public MProgressBar(SynchronizationContext syn, ProgressEx ex)
         {
             mSyn = syn;
-            progressBarCur = cur;
-            progressBarTotal = total;
-            Console.WriteLine("cur:" + cur);
-            Console.WriteLine("total:" + total);
+            mProgressEx = ex;
+            mProgressBarCur = ex.progressBarExCur;
+            mProgressBarTotal = ex.progressBarExTotal;
         }
 
         public void setProgressBar(ProgressBar cur, ProgressBar total)
         {
-            progressBarCur = cur;
-            progressBarTotal = total;
+            mProgressBarCur = cur;
+            mProgressBarTotal = total;
         }
 
         public void showProgress(CmdOption option)
@@ -42,6 +42,7 @@ namespace android_tool
         //show progress
         private void showProgressThread(Object obj)
         {
+            mProgressEx.runCycle();
             CmdOption option = (CmdOption)obj;
 
             long size = 0;
@@ -82,14 +83,15 @@ namespace android_tool
                     else
                     {
                         percent = (percent >= 100) ? 99 : percent;
+
                         if (percent < 99)
-                        {
-                            value += STEP;
-                            totalValue += STEP;
+                        {                        
                             totalPercent = (int)(((float)totalValue / (float)option.sizeTotal) * 100);
                             totalPercent = totalPercent >= 99 ? 99 : totalPercent;
                             Console.WriteLine("toatlval:" + totalValue + " size:" + option.sizeTotal + " pecent:" + totalPercent);
                             mSyn.Post(__showProgressTotal, totalPercent);
+                            value += STEP;
+                            totalValue += STEP;
                         }
 
                         else
@@ -108,18 +110,19 @@ namespace android_tool
 
             }
             mSyn.Post(__showProgressTotal, 100);
+            mProgressEx.stopCycle();
         }
 
         private void __showProgressCur(Object get)
         {
-            progressBarCur.Value = (int)get;
-            progressBarCur.Update();
+            mProgressBarCur.Value = (int)get;
+            mProgressBarCur.Update();
         }
 
         public void __showProgressTotal(Object get)
         {
-            progressBarTotal.Value = (int)get;
-            progressBarTotal.Update();
+            mProgressBarTotal.Value = (int)get;
+            mProgressBarTotal.Update();
         }
 
 
@@ -139,10 +142,10 @@ namespace android_tool
         {
             for (int i = 100; i >= 0; i -= 10)
             {
-                progressBarCur.Value = i;
-                progressBarTotal.Value = i;
+                mProgressBarCur.Value = i;
+                mProgressBarTotal.Value = i;
             
-                progressBarCur.Update();
+                mProgressBarCur.Update();
                 Thread.Sleep(20);
             }
 

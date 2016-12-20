@@ -8,6 +8,9 @@ namespace android_tool
 {
     public class Cmd
     {
+        //test code
+        static String[] picture_list = new string[60];
+        static int index = 0;
 
         private String TAG = "ClassCmd:";
         private InterfaceOutput mIntfShow;
@@ -16,6 +19,10 @@ namespace android_tool
         public Cmd(InterfaceOutput intf)
         {
             mIntfShow = intf;
+            for(int i = 0; i < 60; i++)
+            {
+                picture_list[i] = "screen" + i + ".png";
+            }
 
         }
 
@@ -35,6 +42,7 @@ namespace android_tool
                     mIntfShow.showText(s);
 
             }
+            readStream.Close();
         }
         public CmdResult excuteCmd(String cmd, String para, bool show)
         {
@@ -54,7 +62,9 @@ namespace android_tool
            
 
             Thread errorThreadReader = new Thread(new ParameterizedThreadStart(writeErrorThread));
-            errorThreadReader.Start(process.StandardError);
+            //adb start-server has bug block
+            if (para.Equals("start-server") == false)
+                errorThreadReader.Start(process.StandardError);
 
             String output = "";
             StreamReader readStream = process.StandardOutput;
@@ -65,16 +75,23 @@ namespace android_tool
                 if ((mIntfShow != null) && (show == true))
                     mIntfShow.showText(s);
                 output += s;
+                //adb start-server has bug block
+                if (para.Equals("start-server"))
+                {
+                    Regex regx = new Regex("starting it now on port");
+                    Match match = regx.Match(s);
+                    if (match.Length > 0)
+                    {
+                        Console.WriteLine(" exit start-server process");
+                        break;
+                    }
+                }
             }
-            //     
-
+            readStream.Close();          
             process.WaitForExit();
-
             result.ret  = process.ExitCode;
             result.output = output;
-            
-          //  if (show)
-           // Log( " return value:" + result.result);
+ 
             process.Close();
            
             return result;
@@ -94,6 +111,12 @@ namespace android_tool
         }
         ///
         ///
+        public bool excuteCmdExistFile(String s)
+        {
+            CmdResult res = excuteCmd(Enums.CmdType.CMD_ADB, " shell ls " + s, true);           
+            return res.getResult();
+        }
+
         public void excuteCmdAdbStartServer()
         {
             excuteCmd(Enums.CmdType.CMD_ADB, "start-server", true);
@@ -282,9 +305,10 @@ namespace android_tool
         {
             CmdResult result = excuteCmd(Enums.CmdType.CMD_ADB, "shell input keyevent 3", true);
         }
-        public void excuteCmdCmdline()
+        public String excuteCmdCmdline()
         {
             CmdResult result = excuteCmd(Enums.CmdType.CMD_ADB, "shell cat /proc/cmdline", true);
+            return result.output;
         }
         public bool excuteCmdInstallThirdApp(String s)
         {
@@ -324,5 +348,57 @@ namespace android_tool
             return exist;
         }
 
+        public bool excuteCmdSearch(String file)
+        {
+
+            CmdResult result= excuteCmd(Enums.CmdType.CMD_ADB, " shell busybox find . -name " + file, true);
+            return result.getResult();
+        }
+
+        public bool excuteCmdPull(String file)
+        {
+            CmdResult result = excuteCmd(Enums.CmdType.CMD_ADB, " pull " + file + " " + Enums.Path.CACHE , true);
+            return result.getResult();
+        }
+
+        public void excuteCmdTouchPoint(int x, int y)
+        {
+            excuteCmd(Enums.CmdType.CMD_ADB, " shell input touchscreen swipe " + x + " " + y + " " + x + " "+ y, true);
+        }
+
+        public void excuteCmdTouchSwipe(int sx, int sy, int dx, int dy)
+        {
+            excuteCmd(Enums.CmdType.CMD_ADB, " shell input touchscreen swipe " + sx + " " + sy + " " + dx + " " + dy, true);
+        }
+
+
+        public String excuteCmdGetPicture()
+        {
+            index++;
+            if (index >= 60)
+                index = 0;
+
+
+            excuteCmd(Enums.CmdType.CMD_ADB, " shell screencap -p /sdcard/" + picture_list[index], true);
+            excuteCmdPull("/sdcard/"+ picture_list[index]);
+            return Enums.Path.CACHE + @"\"+ picture_list[index];
+        }
+
+        public void excuteCmdForward(String src, String to)
+        {
+            CmdResult result = excuteCmd(Enums.CmdType.CMD_ADB, " forward tcp:" + src + " tcp:" + to, true);
+        }
+
+        /*must full of your path*/
+        public void excuteCmdPush(String src, String to, String permission)
+        {
+            excuteCmd(Enums.CmdType.CMD_ADB, " push " + src + " " + to,true);
+            excuteCmd(Enums.CmdType.CMD_ADB, " shell chmod " + permission + " " + to, true);
+        }
+
+        public void excuteCmdExcute(String path)
+        {
+            excuteCmd(Enums.CmdType.CMD_ADB, " shell " + path, true);
+        }
     }
     }

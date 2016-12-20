@@ -45,6 +45,9 @@ namespace android_tool
 
         }
 
+        public String name;
+        public int type;
+        public int index;
         public string[] path;
         public string[] permission;
         public string[] dst;

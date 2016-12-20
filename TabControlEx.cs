@@ -36,12 +36,9 @@ namespace android_tool.pictures
             mImage[2] = new Bitmap(this.GetType(), "upgrade.png");
             mImage[3] = new Bitmap(this.GetType(), "app.png");
             mImage[4] = new Bitmap(this.GetType(), "setting.png");
-            this.MouseMove  += new MouseEventHandler(tabPage2_MouseMove);
-            // mImageBack = new Bitmap(this.GetType(), "back.png");
-            // Bitmap bmWatermark;
-        
-
-        
+      
+     //       this.MouseMove  += new MouseEventHandler(tabPage2_MouseMove);
+         
         }
 
         public void setTagName()
@@ -51,35 +48,15 @@ namespace android_tool.pictures
             TabPages[2].Text = "           " + Enums.TabPageName.UPDATE;
             TabPages[3].Text = "           " + Enums.TabPageName.APP;
             TabPages[4].Text = "           " + Enums.TabPageName.SETTING;
+          
         }
 
         public void setTagDeviceName(String s)
         {
-          
-            TabPages[0].Text = "        " + s;
-        }
-
-        private void tabPage2_MouseMove(object sender, MouseEventArgs e)
-        {
-          //  Console.WriteLine("move:" + e.Location);
-            int index = inRect(e.Location);
-        //    Console.WriteLine("index:" + index + "move:" + e.Location);
-
-            if (index != -1)
-                SelectedIndex = index;
-        }
-
-        private int inRect(Point p)
-        {
-            for (int i = 0; i < this.TabCount; i++)
-            {
-                Rectangle rect = this.GetTabRect(i);
-                if (p.X >= rect.Left && p.X <= rect.Right
-                    && p.Y >= rect.Top && p.Y <= rect.Bottom)
-                    return i;
-
-            }
-                return -1;
+            if (s.Equals(Enums.DeviceState.DEVICE_NONE_CONNECT))
+                TabPages[0].Text = "       " + s;
+            else
+                TabPages[0].Text = "        " + s;
         }
 
         private void drawOneTab(Graphics graphics, int i)

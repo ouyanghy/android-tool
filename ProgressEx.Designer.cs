@@ -36,6 +36,8 @@
             // 
             // progressBarExCur
             // 
+            this.progressBarExCur.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.progressBarExCur.ForeColor = System.Drawing.Color.White;
             this.progressBarExCur.Location = new System.Drawing.Point(81, 2);
             this.progressBarExCur.Name = "progressBarExCur";
             this.progressBarExCur.Size = new System.Drawing.Size(608, 32);

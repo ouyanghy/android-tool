@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace android_tool
 {
@@ -7,10 +9,15 @@ namespace android_tool
     class UserInfo
     {
         private String PATH = Environment.CurrentDirectory + @"\";
-        
+        private String PATH_IMG;
+        private String PATH_FRAMEWORK;
+        private Thread mThreadListenTextBox;
+        private TextBox mTextImg, mTextFramework;
+        private bool bWork = true;
         public UserInfo()
         {
-
+            PATH_IMG = getPathImg(); ;
+            PATH_FRAMEWORK = getPathFramework();
         }
 
         public bool checkUserInfo(String usr, String pwd)
@@ -31,7 +38,7 @@ namespace android_tool
 
         public void saveUserInfo(String usr, String pwd)
         {
-            FileInfo info = new FileInfo(PATH + Enums.UserInfomation.USERINFO_FILE_SAVE);
+            FileInfo info = new FileInfo(PATH + Enums.Path.USERINFO_FILE_SAVE);
             if (info.Exists == false)
                 info.Create();
 
@@ -40,12 +47,12 @@ namespace android_tool
             FileStream writeStream = info.OpenWrite();
             writeStream.Write(bs, 0, bs.Length);
             writeStream.Close();
-            Console.WriteLine("save user info path" + PATH + Enums.UserInfomation.USERINFO_FILE_SAVE);
+            Console.WriteLine("save user info path" + PATH + Enums.Path.USERINFO_FILE_SAVE);
         }
 
         public String loadUserInfo()
         {
-            FileInfo info = new FileInfo(PATH + Enums.UserInfomation.USERINFO_FILE_SAVE);
+            FileInfo info = new FileInfo(PATH + Enums.Path.USERINFO_FILE_SAVE);
             if (info.Exists == false)
                 return null;
 
@@ -86,7 +93,7 @@ namespace android_tool
                 return null;
         }
 
-        public  bool initUserInfo()
+        public  bool isRoot()
         {
   
             String usr = getUser();
@@ -96,5 +103,106 @@ namespace android_tool
             return b;
 
         }
+
+
+        public bool checkPathInfo(String path)
+        {
+            if (path != null)
+                return true;
+            return false;
+        }
+
+        public void savePathInfo(String img, String frame)
+        {
+            if (checkPathInfo(img) == false)
+                return;
+
+            FileInfo info = new FileInfo(PATH + Enums.Path.USERINFO_FILE_PATH);
+            if (info.Exists == false)
+                info.Create();
+
+            byte[] bs = System.Text.Encoding.Default.GetBytes(img + "," + frame + ",");
+
+            FileStream writeStream = info.OpenWrite();
+            writeStream.Write(bs, 0, bs.Length);
+            writeStream.Close();
+            Console.WriteLine("save user info path" + PATH + Enums.Path.USERINFO_FILE_PATH);
+        }
+
+        public String loadPathInfo()
+        {
+            FileInfo info = new FileInfo(PATH + Enums.Path.USERINFO_FILE_PATH);
+            if (info.Exists == false)
+                return null;
+
+            byte[] bs = new byte[256];
+
+            FileStream readStream = info.OpenRead();
+            readStream.Read(bs, 0, bs.Length);
+            readStream.Close();
+
+            return System.Text.Encoding.Default.GetString(bs);
+        }
+
+        public String getPathFramework()
+        {
+            String info = loadPathInfo();
+            if (info == null)
+                return null;
+
+            String[] s = info.Split(',');
+            if (s.Length > 1)
+                return s[0];
+            else
+                return null;
+        }
+
+        public String getPathImg()
+        {
+            String info = loadPathInfo();
+            if (info == null)
+                return null;
+
+            String[] s = info.Split(',');
+            if (s.Length > 1)
+                return s[1];
+            else
+                return null;
+        }
+
+        public void startListenTextBoxChange(TextBox textImg, TextBox textFramework)
+        {
+            mTextImg = textImg;
+            mTextFramework = textFramework;
+            mThreadListenTextBox = new Thread(threadListen);
+            mThreadListenTextBox.Start();
+        }
+
+        private void threadListen()
+        {
+            bool retImg = false;
+            bool retFramework = false;
+            while (bWork)
+            {
+                retImg = PATH_IMG.Equals(mTextImg.Text);
+                if (retImg == false)
+                    PATH_IMG = mTextImg.Text;
+
+                retFramework = PATH_FRAMEWORK.Equals(mTextFramework.Text);
+                if (retFramework == false)
+                    PATH_FRAMEWORK = mTextFramework.Text;
+
+                if ((retFramework & retImg) == false)
+                    savePathInfo(PATH_IMG, PATH_FRAMEWORK);
+
+                Thread.Sleep(1000);
+            }
+
+        }
+        public void stopListenTextBoxChange()
+        {
+            bWork = false;
+        }
+
     }
 }

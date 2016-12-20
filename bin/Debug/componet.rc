@@ -1,0 +1,22 @@
+## symbol '#' is comment
+#APP
+type->2,name->BatteryDischarger.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\BatteryDischarger.apk,dst->null,permission->null,index->1,
+type->2,name->adb-wireless.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\adb-wireless.apk,dst->null,permission->null,index->1,
+type->2,name->display.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\display.apk,dst->null,permission->null,index->1,
+type->2,name->explore.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\explore.apk,dst->null,permission->null,index->1,
+type->2,name->ping.apk,src->ping.apk,dst->null,permission->null,index->1,
+type->2,name->SDLgui5.0.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\SDLgui5.0.apk,dst->null,permission->null,index->1,
+type->2,name->serial.apk,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\serial.apk,dst->null,permission->null,index->1,
+
+##FIRMWARE
+#Scan
+type->3,name->Scan,src->\\192.168.1.200\ouyanghy\v8916\v588\out\target\product\msm8916_32\system\app\Scan.apk,dst->/system/app/Scan.apk,permission->0666,index->2
+type->3,name->Scan,src->\\192.168.1.200\ouyanghy\v8916\v588\out\target\product\msm8916_32\system\app\Scan.odex,dst->/system/app/Scan.odex,permission->0666,index->1
+
+#Launcher
+type->3,name->Launcher,src->\\192.168.1.200\ouyanghy\v8916\v588\out\target\product\msm8916_32\system\priv-app\Launcher2.apk,dst->/system/app/priv-Launcher2.apk,permission->0666,index->2
+type->3,name->Launcher,src->\\192.168.1.200\ouyanghy\v8916\v588\out\target\product\msm8916_32\system\priv-app\Launcher2.odex,dst->/system/app/priv-Launcher2.odex,permission->0666,index->1
+
+#BusyBox
+type->3,name->BusyBox,src->D:\vsproject\android-tool\android-tool\bin\Debug\src\busybox,dst->/system/bin/busybox,permission->0555,index->1
+

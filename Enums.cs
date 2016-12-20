@@ -10,6 +10,8 @@ namespace android_tool
     public class Enums
     {
         public delegate void ptr_func_flash(object sender, EventArgs e);
+        public delegate void ptr_func_search(object sender, EventArgs e);
+        public delegate void ptr_func_pull(object sender, EventArgs e);
         public delegate void ptr_func_showLog(String s);
 
         public class Error
@@ -27,6 +29,10 @@ namespace android_tool
             public const string INSTALL = "安装第三方错误";
             public const string UPDATE = "更新系统组件错误";
             public const string CMDNOTEXIST = "未检测到命令";
+            public const string INVAILD_INPUT = "输入错误";
+            public const string CMDLINE = "未获取到命令行参数";
+            public const string BUILD_ID = "版本号修改失败";
+            public const string BUILD_TYPE = "型号修改失败";
         }
 
         public class WorkState
@@ -43,7 +49,10 @@ namespace android_tool
             public const string INSTALL = "安装第三方成功";
             public const string UPDATE = "更新系统组件成功";
             public const string FLASH = "烧录成功";
-
+            public const string SEARCH = "查找完成";
+            public const string PULL = "导出完成\r\n正在打开导出文件夹......";
+            public const string BUILD_ID = "版本号修改成功";
+            public const string BUILD_TYPE = "型号修改成功";
         }
 
         public enum ConnectState
@@ -64,7 +73,8 @@ namespace android_tool
             public const int SPLASH = 4;
             public const int USERDATA = 5;
             public const int RECOVERY = 6;
-            public const int INVAILD = 7;
+            public const int ALL = 7;
+            public const int INVAILD = 8;
         }
 
         public class DeviceState
@@ -98,6 +108,7 @@ namespace android_tool
             public const string PING = "ping.apk";
             public const string SDLGUI4 = "SDLgui4.0.apk";
             public const string SDLGUI5 = "SDLgui5.0.apk";
+            public const string MOER = "更多...";
         }
 
         public class AndroidPath
@@ -149,6 +160,7 @@ namespace android_tool
         {
             public const string ERROR = "错误提示";
             public const string TIP = "提示";
+            public const string CMDLINE = "命令参数行";
         }
 
         public class CmdType
@@ -157,20 +169,34 @@ namespace android_tool
             public const int FASTBOOT = 1;
             public const int APK = 2;
             public const int UPDATE = 3;
-            public const int UNKNOWN = 4;
+            public const int SEARCH = 4;
+            public const int PULL = 5;
+            public const int UNKNOWN = 6;
             private static String PATH = Environment.CurrentDirectory;
             public  static String CMD_ADB = PATH + @"\tools\" + @"adb.exe";
             public static String CMD_FASTBOOT = PATH + @"\tools\" + @"fastboot.exe";
+           
         }
 
-        
+        public class Path
+        {
+
+            public static String PATH = Environment.CurrentDirectory;
+            public static String  PATH_SRC = PATH + @"\src\";
+            public static String CACHE = PATH + @"\cache";
+            public const string USERINFO_FILE_SAVE = "user.info";
+            public const string USERINFO_FILE_PATH = "path.info";
+            public static string COMPONET = PATH + @"\componet.rc";
+            public  static string BUILD = CACHE + "\\" +"build.prop";
+        }
+
 
         public class ButtonName
         {
             public const string REBOOT = "Reboot";
             public const string FASTBOOT_REBOOT = "Fastboot Reboot";
             public const string REMOUNT = "Remount";
-            public const string BOOTLOADER = "Reboot Bootloader";
+            public const string BOOTLOADER = "Reboot  Bootloader";
             public const string CMDLINE = "Cmdline";
 
             public const string ABOOT = "Aboot";
@@ -190,15 +216,20 @@ namespace android_tool
             public const string SCAN = "Scan";
             public const string LANCHER = "Lancher";
             public const string CAMERA = "Camera";
+            public const string BUILD_ID = "手机版本";
+            public const string BUILD_TYPE = "手机型号";
 
-            public const string REBOOT_PNG = "reboot.png";
-            public const string FASTBOOT_REBOOT_PNG = "fastboot-reboot.png";
-            public const string REMOUNT_PNG = "fastboot-reboot.png";
-            public const string BOOTLOADER_PNG = "fastboot-reboot.png";
-            public const string CMDLINE_PNG = "cmdline.png";
-            public const string APK_PNG = "apk.png";
-            public const string FRAMEWARE_PNG = "frameware.png";
+            public const string CONNECT = "连接";
+            public const string DISCONNECT = "断开连接";
+            public const string SCREEN_POWER = "电源键";
+        }
 
+        public class PNG
+        {
+            public const string CMD = "command.png";
+            public const string KEY = "button.png";
+            public const string FRAMEWORK = "package.png";
+            public const string APK = "apk.png";
         }
 
         public class TabPageName
@@ -212,10 +243,22 @@ namespace android_tool
 
         public class UserInfomation
         {
-            public const string USERINFO_FILE_SAVE = "user.info";
             public const string USER = "root";
             public const string PASSWD = "84799123";
+            
         }
+
+        public class Key
+        {
+            public const string NAME = "name";
+            public const string TYPE = "type";
+            public const string SRC = "src";
+            public const string DST = "dst";
+            public const string PERMISSION = "permission";
+            public const string INDEX = "index";
+        }
+
+       
 
     }
 }
