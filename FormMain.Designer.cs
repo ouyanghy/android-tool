@@ -73,11 +73,12 @@ namespace android_tool
             this.tabPageUpdate = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
+            this.buttonHome = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonExScreenConnect = new android_tool.pictures.ButtonEx();
             this.buttonExScreenUp = new android_tool.pictures.ButtonEx();
@@ -531,7 +532,9 @@ namespace android_tool
             // 
             // flowLayoutPanel5
             // 
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel5.Controls.Add(this.label5);
+            this.flowLayoutPanel5.Controls.Add(this.label15);
             this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel4);
             this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel12);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -539,6 +542,7 @@ namespace android_tool
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(705, 531);
             this.flowLayoutPanel5.TabIndex = 0;
+            this.flowLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel5_Paint);
             // 
             // label5
             // 
@@ -551,64 +555,78 @@ namespace android_tool
             this.label5.Text = "---------------------------------------------------------------------------------" +
     "--------------------------------";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 12);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "               ";
+            // 
             // flowLayoutPanel4
             // 
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.DimGray;
             this.flowLayoutPanel4.Controls.Add(this.pictureBoxScreen);
-            this.flowLayoutPanel4.Controls.Add(this.button1);
-            this.flowLayoutPanel4.Controls.Add(this.button2);
-            this.flowLayoutPanel4.Controls.Add(this.button3);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 15);
+            this.flowLayoutPanel4.Controls.Add(this.buttonMenu);
+            this.flowLayoutPanel4.Controls.Add(this.buttonHome);
+            this.flowLayoutPanel4.Controls.Add(this.buttonBack);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(104, 15);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(320, 490);
             this.flowLayoutPanel4.TabIndex = 15;
             // 
             // pictureBoxScreen
             // 
-            this.pictureBoxScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxScreen.BackgroundImage")));
+            this.pictureBoxScreen.BackColor = System.Drawing.Color.Silver;
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
             this.pictureBoxScreen.Size = new System.Drawing.Size(320, 431);
-            this.pictureBoxScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
             // 
-            // button1
+            // buttonMenu
             // 
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(3, 440);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 48);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Menu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonMenu.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonMenu.Location = new System.Drawing.Point(3, 440);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(96, 48);
+            this.buttonMenu.TabIndex = 1;
+            this.buttonMenu.Text = "Menu";
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
-            // button2
+            // buttonHome
             // 
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(105, 440);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 48);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Home";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonHome.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonHome.Location = new System.Drawing.Point(105, 440);
+            this.buttonHome.Name = "buttonHome";
+            this.buttonHome.Size = new System.Drawing.Size(96, 48);
+            this.buttonHome.TabIndex = 2;
+            this.buttonHome.Text = "Home";
+            this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
-            // button3
+            // buttonBack
             // 
-            this.button3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(207, 440);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 48);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonBack.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonBack.Location = new System.Drawing.Point(207, 440);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(96, 48);
+            this.buttonBack.TabIndex = 3;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // flowLayoutPanel12
             // 
+            this.flowLayoutPanel12.BackColor = System.Drawing.Color.Silver;
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenConnect);
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenUp);
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenExit);
             this.flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel12.Location = new System.Drawing.Point(329, 15);
+            this.flowLayoutPanel12.Location = new System.Drawing.Point(430, 15);
             this.flowLayoutPanel12.Name = "flowLayoutPanel12";
             this.flowLayoutPanel12.Size = new System.Drawing.Size(127, 490);
             this.flowLayoutPanel12.TabIndex = 16;
@@ -910,6 +928,7 @@ namespace android_tool
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = global::android_tool.Properties.Resources.user;
             this.pictureBox1.Location = new System.Drawing.Point(3, 123);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 72);
@@ -1019,6 +1038,7 @@ namespace android_tool
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackgroundImage = global::android_tool.Properties.Resources.info;
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(72, 72);
@@ -1222,9 +1242,10 @@ namespace android_tool
         private ButtonEx buttonExScreenUp;
         private ButtonEx buttonExScreenExit;
         private System.Windows.Forms.PictureBox pictureBoxScreen;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonMenu;
+        private System.Windows.Forms.Button buttonHome;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Label label15;
     }
 }
 

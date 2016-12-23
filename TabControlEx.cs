@@ -33,7 +33,7 @@ namespace android_tool.pictures
             mImage = new Bitmap[10];
             mImage[0] = new Bitmap(this.GetType(), "connect.png");
             mImage[1] = new Bitmap(this.GetType(), "iso.png");
-            mImage[2] = new Bitmap(this.GetType(), "upgrade.png");
+            mImage[2] = new Bitmap(this.GetType(), "screen.png");
             mImage[3] = new Bitmap(this.GetType(), "app.png");
             mImage[4] = new Bitmap(this.GetType(), "setting.png");
       

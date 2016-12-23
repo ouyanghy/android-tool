@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="android-tool.exe" size="1098240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="android-tool.exe" size="896512">
       <assemblyIdentity name="android-tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nit3Xe1+X2JrtSGvJSrmDzDbGV3Bf8y52AeRD5uftBQ=</dsig:DigestValue>
+        <dsig:DigestValue>aErUPHJZ8ic6jRA7SLoYxpPuZG6OWJ57cQfnm7KJAFI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

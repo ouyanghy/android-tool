@@ -14,6 +14,8 @@ namespace android_tool
     public partial class FormFindList : Form
     {
         private static SynchronizationContext mSyn;
+        private InterfaceOutput mInterface;
+        private bool bState = true;
         public FormFindList()
         {
             mSyn = SynchronizationContext.Current;
@@ -36,6 +38,15 @@ namespace android_tool
             Clipboard.SetText(listBoxFind.Items[listBoxFind.SelectedIndex].ToString());
         }
 
+        public void setState(bool b)
+        {
+            bState = b;
+        }
+
+        public void setFindCall(InterfaceOutput inter)
+        {
+            mInterface = inter;
+        }
         public void addItem(String s)
         {
            
@@ -48,6 +59,9 @@ namespace android_tool
             this.listBoxFind.Items.Add(s);
         }
 
+        public void addListen(Enums.ptr_func_showLog func)
+        {
 
+        }
     }
 }

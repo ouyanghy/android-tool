@@ -236,7 +236,7 @@ namespace android_tool
         {
             public const string DEVICE_STATE = "设备状态";
             public const string FLASH = "烧录";
-            public const string UPDATE = "组件";
+            public const string UPDATE = "控制";
             public const string APP = "应用";
             public const string SETTING = "设置";
         }
@@ -258,6 +258,11 @@ namespace android_tool
             public const string INDEX = "index";
         }
 
+        public class ClickType
+        {
+            public const int CLICK = 0;
+            public const int SWIPE = 1;
+        }
        
 
     }

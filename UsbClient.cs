@@ -36,7 +36,7 @@ namespace android_tool
             byte[] bs = new byte[len];
 
             int ret = mClient.read(bs, len);
-            Console.WriteLine("read len:" + ret);
+           // Console.WriteLine("read len:" + ret);
             return bs;
         }
 
@@ -73,7 +73,7 @@ namespace android_tool
         public bool isFrameStart()
         {
             byte [] bs  = read(6);
-            Console.WriteLine("framestart value:" + bs[0] + "," + bs[1] + "," + bs[2] + "," + bs[3] + "," + bs[4] + "," + bs[5] + "bs:" + System.Text.Encoding.Default.GetString(bs));
+           // Console.WriteLine("framestart value:" + bs[0] + "," + bs[1] + "," + bs[2] + "," + bs[3] + "," + bs[4] + "," + bs[5] + "bs:" + System.Text.Encoding.Default.GetString(bs));
             if (bs[0] == (byte)'s' &&
                 bs[1] == (byte)'t' &&
                 bs[2] == (byte)'a' &&

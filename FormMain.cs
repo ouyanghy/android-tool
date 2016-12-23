@@ -9,7 +9,7 @@ namespace android_tool
     {
 
         private static String PATH_FRAMEWORK = "";
-        private static String PATH_IMG   = "";
+        private static String PATH_IMG = "";
 
         const int WM_SYSCOMMAND = 0x0112;
         const int SC_CLOSE = 0xF060;
@@ -30,9 +30,8 @@ namespace android_tool
         private bool mIsRoot = false;
         private bool mShowSearch = false;
         private UserInfo mInfo;
-        private FormControl mFormControl;
         private ScreenCtrl mScreen;
-     
+
         public void initWindow()
         {
             //device
@@ -99,7 +98,7 @@ namespace android_tool
             pullEx1.setFunc(buttonPull);
 
         }
-        
+
         private void setFlowPanelScroll(FlowLayoutPanel panel)
         {
             panel.AutoScroll = false;
@@ -108,7 +107,7 @@ namespace android_tool
             panel.HorizontalScroll.Maximum = 0; // 把水平滚动范围设成0就看不到水平滚动条了
             flowLayoutPanel1.AutoScroll = true; // 注意启用滚动的顺序，应是完成设置的最后一条语句
         }
-        
+
         public void initProgressBar()
         {
             progressBarCur = progressExApp.progressBarExCur;
@@ -119,7 +118,7 @@ namespace android_tool
             progressBarTotal = progressExFlash.progressBarExTotal;
             mProgressBarFlash = new MProgressBar(mSyn, progressExFlash);
 
-           
+
         }
 
         public void initUserInfo()
@@ -169,7 +168,7 @@ namespace android_tool
             //setFlowPanelScroll(panel)
             new PanelComponet(panelApp, panelFrameware, mCmd, mThreadCmd, mProgressBarApp);
             mScreen = new ScreenCtrl(mCmd, pictureBoxScreen);
-            
+
             initScreenContrl();
 
         }
@@ -189,7 +188,14 @@ namespace android_tool
         }
         private void buttonScreenConnectClick(object sender, EventArgs e)
         {
-            mScreen.connect();
+            try
+            {
+                mScreen.connect();
+            }
+            catch (Exception ex)
+            {
+                mMessage.ShowMessageBoxTimeout("" + ex, Enums.Title.ERROR, 8000);
+            }
         }
 
         private void buttonScreenPowerClick(object sender, EventArgs e)
@@ -198,7 +204,14 @@ namespace android_tool
         }
         private void buttonScreenDisconnectClick(object sender, EventArgs e)
         {
-            mScreen.disconnect();
+            try
+            {
+                mScreen.disconnect();
+            }
+            catch (Exception ex)
+            {
+                mMessage.ShowMessageBoxTimeout("" + ex, Enums.Title.ERROR, 8000);
+            }
         }
 
 
@@ -244,7 +257,7 @@ namespace android_tool
 
         private void buttonExBusybox_Click(object sender, EventArgs e)
         {
-         
+
             bool adbState = mCmd.excuteCmdGetAdbState();
             if (!adbState)
             {
@@ -260,7 +273,7 @@ namespace android_tool
             mThreadCmd.startCmdUpdateThread(option, mProgressBarUpdate);
 
         }
-    
+
         private void buttonExAppMore_Click(object sender, EventArgs e)
         {
             bool adbState = mCmd.excuteCmdGetAdbState();
@@ -278,7 +291,7 @@ namespace android_tool
             }
         }
 
-       
+
         private String getFramewarePath()
         {
             String s = textBoxRouteFramework.Text;
@@ -307,7 +320,7 @@ namespace android_tool
             mThreadCmd.startCmdUpdateThread(option, mProgressBarUpdate);
         }
 
-     
+
         private void buttonExBuild_Click(object sender, EventArgs e)
         {
             new FormBuildId(mCmd).Show();
@@ -574,7 +587,7 @@ namespace android_tool
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxRouteFramework.Text = dialog.SelectedPath;            
+                textBoxRouteFramework.Text = dialog.SelectedPath;
             }
         }
 
@@ -601,9 +614,9 @@ namespace android_tool
         private void checkBoxLog_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxLog.Checked)
-                mFormLog.Show();
+                mFormLog.Visible = true;
             else
-                mFormLog.Hide();
+                mFormLog.Visible = false;
 
         }
 
@@ -636,7 +649,7 @@ namespace android_tool
         {
             if (s != null && !s.Equals(""))
             {
-              
+
                 mFormLog.showLog(s);
 
                 if (mShowSearch == true)
@@ -645,7 +658,7 @@ namespace android_tool
                     {
                         Regex regAdb = new Regex(@"\$\:");
                         Match match = regAdb.Match(s);
-                        Console.WriteLine("s:" +s + " len " +  match.Length);
+                        Console.WriteLine("s:" + s + " len " + match.Length);
 
                         if (s.Equals("\r\n") || s.Equals("\n"))
                             return;
@@ -676,19 +689,11 @@ namespace android_tool
                 mMessage.ShowMessageBoxTimeout(Enums.Error.INVAILD_INPUT, Enums.Title.ERROR, 2000);
                 return;
             }
-            if (mFormFind == null)
-            {
-                mFormFind = new FormFindList();
-            }
-            else
-            {
-                mFormFind.Close();
-                mFormFind = new FormFindList();
-            }
 
-            mFormFind.Show();         
+            mFormFind = new FormFindList();
+            mFormFind.Show();
 
-            if (mCmd.excuteCmdExistFile(Enums.AndroidPath.SYSTEM_BIN + Enums.ThirdAppFileName.BUSYBOX) == false)                          
+            if (mCmd.excuteCmdExistFile(Enums.AndroidPath.SYSTEM_BIN + Enums.ThirdAppFileName.BUSYBOX) == false)
                 buttonExBusybox_Click(sender, e);
             mShowSearch = true;
             mThreadCmd.startCmdSearchThread(searchEx1.textBoxSerach.Text);
@@ -717,6 +722,26 @@ namespace android_tool
         private void flowLayoutPanel14_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            mCmd.excuteCmdHome();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            mCmd.excuteCmdBack();
         }
     }
 }
