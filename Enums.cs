@@ -230,6 +230,7 @@ namespace android_tool
             public const string KEY = "button.png";
             public const string FRAMEWORK = "package.png";
             public const string APK = "apk.png";
+            public const string BUILD = "upgrade.png";
         }
 
         public class TabPageName

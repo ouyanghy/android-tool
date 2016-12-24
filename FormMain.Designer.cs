@@ -34,7 +34,7 @@ namespace android_tool
             this.label14 = new System.Windows.Forms.Label();
             this.tabControlEx1 = new android_tool.pictures.TabControlEx();
             this.tabPageState = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelHome = new System.Windows.Forms.FlowLayoutPanel();
             this.label24 = new System.Windows.Forms.Label();
             this.searchEx1 = new android_tool.SearchEx();
             this.label2 = new System.Windows.Forms.Label();
@@ -103,10 +103,6 @@ namespace android_tool
             this.textBoxImgRoute = new System.Windows.Forms.TextBox();
             this.buttonBrowseImg = new System.Windows.Forms.Button();
             this.buttonClearImg = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBoxRouteFramework = new System.Windows.Forms.TextBox();
-            this.buttonBrowseFramework = new System.Windows.Forms.Button();
-            this.buttonClearFramework = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -125,9 +121,13 @@ namespace android_tool
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.buttonExBuild = new android_tool.pictures.ButtonEx();
+            this.flowLayoutPanelSystem = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControlEx1.SuspendLayout();
             this.tabPageState.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanelHome.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
             this.flowLayoutPanel11.SuspendLayout();
             this.tabPageFlash.SuspendLayout();
@@ -148,6 +148,7 @@ namespace android_tool
             this.flowLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanelSystem.SuspendLayout();
             this.SuspendLayout();
             // 
             // label14
@@ -176,7 +177,7 @@ namespace android_tool
             // 
             // tabPageState
             // 
-            this.tabPageState.Controls.Add(this.flowLayoutPanel2);
+            this.tabPageState.Controls.Add(this.flowLayoutPanelHome);
             this.tabPageState.Location = new System.Drawing.Point(4, 117);
             this.tabPageState.Name = "tabPageState";
             this.tabPageState.Padding = new System.Windows.Forms.Padding(3);
@@ -185,24 +186,25 @@ namespace android_tool
             this.tabPageState.Text = "tabPage1";
             this.tabPageState.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelHome
             // 
-            this.flowLayoutPanel2.Controls.Add(this.label24);
-            this.flowLayoutPanel2.Controls.Add(this.searchEx1);
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.pullEx1);
-            this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.label27);
-            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel10);
-            this.flowLayoutPanel2.Controls.Add(this.label6);
-            this.flowLayoutPanel2.Controls.Add(this.label12);
-            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel11);
-            this.flowLayoutPanel2.Controls.Add(this.label25);
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(699, 525);
-            this.flowLayoutPanel2.TabIndex = 0;
+            this.flowLayoutPanelHome.AutoScroll = true;
+            this.flowLayoutPanelHome.Controls.Add(this.label24);
+            this.flowLayoutPanelHome.Controls.Add(this.searchEx1);
+            this.flowLayoutPanelHome.Controls.Add(this.label2);
+            this.flowLayoutPanelHome.Controls.Add(this.pullEx1);
+            this.flowLayoutPanelHome.Controls.Add(this.label1);
+            this.flowLayoutPanelHome.Controls.Add(this.label27);
+            this.flowLayoutPanelHome.Controls.Add(this.flowLayoutPanel10);
+            this.flowLayoutPanelHome.Controls.Add(this.label6);
+            this.flowLayoutPanelHome.Controls.Add(this.label12);
+            this.flowLayoutPanelHome.Controls.Add(this.flowLayoutPanel11);
+            this.flowLayoutPanelHome.Controls.Add(this.label25);
+            this.flowLayoutPanelHome.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelHome.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelHome.Name = "flowLayoutPanelHome";
+            this.flowLayoutPanelHome.Size = new System.Drawing.Size(699, 525);
+            this.flowLayoutPanelHome.TabIndex = 0;
             // 
             // label24
             // 
@@ -566,7 +568,7 @@ namespace android_tool
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.BackColor = System.Drawing.Color.DimGray;
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.Black;
             this.flowLayoutPanel4.Controls.Add(this.pictureBoxScreen);
             this.flowLayoutPanel4.Controls.Add(this.buttonMenu);
             this.flowLayoutPanel4.Controls.Add(this.buttonHome);
@@ -578,7 +580,7 @@ namespace android_tool
             // 
             // pictureBoxScreen
             // 
-            this.pictureBoxScreen.BackColor = System.Drawing.Color.Silver;
+            this.pictureBoxScreen.BackColor = System.Drawing.Color.White;
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
             this.pictureBoxScreen.Size = new System.Drawing.Size(320, 431);
@@ -591,7 +593,7 @@ namespace android_tool
             this.buttonMenu.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonMenu.Location = new System.Drawing.Point(3, 440);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(96, 48);
+            this.buttonMenu.Size = new System.Drawing.Size(100, 48);
             this.buttonMenu.TabIndex = 1;
             this.buttonMenu.Text = "Menu";
             this.buttonMenu.UseVisualStyleBackColor = true;
@@ -600,9 +602,9 @@ namespace android_tool
             // buttonHome
             // 
             this.buttonHome.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonHome.Location = new System.Drawing.Point(105, 440);
+            this.buttonHome.Location = new System.Drawing.Point(109, 440);
             this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(96, 48);
+            this.buttonHome.Size = new System.Drawing.Size(100, 48);
             this.buttonHome.TabIndex = 2;
             this.buttonHome.Text = "Home";
             this.buttonHome.UseVisualStyleBackColor = true;
@@ -611,9 +613,9 @@ namespace android_tool
             // buttonBack
             // 
             this.buttonBack.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonBack.Location = new System.Drawing.Point(207, 440);
+            this.buttonBack.Location = new System.Drawing.Point(215, 440);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(96, 48);
+            this.buttonBack.Size = new System.Drawing.Size(100, 48);
             this.buttonBack.TabIndex = 3;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -621,7 +623,7 @@ namespace android_tool
             // 
             // flowLayoutPanel12
             // 
-            this.flowLayoutPanel12.BackColor = System.Drawing.Color.Silver;
+            this.flowLayoutPanel12.BackColor = System.Drawing.Color.Gainsboro;
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenConnect);
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenUp);
             this.flowLayoutPanel12.Controls.Add(this.buttonExScreenExit);
@@ -667,6 +669,9 @@ namespace android_tool
             this.panelPage4.Controls.Add(this.label8);
             this.panelPage4.Controls.Add(this.progressExApp);
             this.panelPage4.Controls.Add(this.label10);
+            this.panelPage4.Controls.Add(this.label18);
+            this.panelPage4.Controls.Add(this.flowLayoutPanelSystem);
+            this.panelPage4.Controls.Add(this.label32);
             this.panelPage4.Controls.Add(this.label16);
             this.panelPage4.Controls.Add(this.panelApp);
             this.panelPage4.Controls.Add(this.flowLayoutPanel13);
@@ -714,7 +719,7 @@ namespace android_tool
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(3, 102);
+            this.label16.Location = new System.Drawing.Point(3, 263);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(32, 17);
             this.label16.TabIndex = 30;
@@ -723,7 +728,7 @@ namespace android_tool
             // panelApp
             // 
             this.panelApp.AutoSize = true;
-            this.panelApp.Location = new System.Drawing.Point(3, 122);
+            this.panelApp.Location = new System.Drawing.Point(3, 283);
             this.panelApp.Name = "panelApp";
             this.panelApp.Size = new System.Drawing.Size(0, 0);
             this.panelApp.TabIndex = 27;
@@ -731,7 +736,7 @@ namespace android_tool
             // flowLayoutPanel13
             // 
             this.flowLayoutPanel13.AutoSize = true;
-            this.flowLayoutPanel13.Location = new System.Drawing.Point(3, 128);
+            this.flowLayoutPanel13.Location = new System.Drawing.Point(3, 289);
             this.flowLayoutPanel13.Name = "flowLayoutPanel13";
             this.flowLayoutPanel13.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel13.TabIndex = 28;
@@ -740,7 +745,7 @@ namespace android_tool
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label9.Location = new System.Drawing.Point(3, 131);
+            this.label9.Location = new System.Drawing.Point(3, 292);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(683, 12);
             this.label9.TabIndex = 29;
@@ -751,7 +756,7 @@ namespace android_tool
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(3, 143);
+            this.label17.Location = new System.Drawing.Point(3, 304);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 17);
             this.label17.TabIndex = 31;
@@ -760,7 +765,7 @@ namespace android_tool
             // panelFrameware
             // 
             this.panelFrameware.AutoSize = true;
-            this.panelFrameware.Location = new System.Drawing.Point(3, 163);
+            this.panelFrameware.Location = new System.Drawing.Point(3, 324);
             this.panelFrameware.Name = "panelFrameware";
             this.panelFrameware.Size = new System.Drawing.Size(0, 0);
             this.panelFrameware.TabIndex = 32;
@@ -769,7 +774,7 @@ namespace android_tool
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label31.Location = new System.Drawing.Point(3, 166);
+            this.label31.Location = new System.Drawing.Point(3, 327);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(683, 12);
             this.label31.TabIndex = 33;
@@ -825,13 +830,9 @@ namespace android_tool
             this.flowLayoutPanel6.Controls.Add(this.textBoxImgRoute);
             this.flowLayoutPanel6.Controls.Add(this.buttonBrowseImg);
             this.flowLayoutPanel6.Controls.Add(this.buttonClearImg);
-            this.flowLayoutPanel6.Controls.Add(this.label18);
-            this.flowLayoutPanel6.Controls.Add(this.textBoxRouteFramework);
-            this.flowLayoutPanel6.Controls.Add(this.buttonBrowseFramework);
-            this.flowLayoutPanel6.Controls.Add(this.buttonClearFramework);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 15);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(699, 90);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(699, 34);
             this.flowLayoutPanel6.TabIndex = 30;
             // 
             // label19
@@ -874,52 +875,11 @@ namespace android_tool
             this.buttonClearImg.UseVisualStyleBackColor = true;
             this.buttonClearImg.Click += new System.EventHandler(this.buttonClearDirImg_Click);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(3, 29);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(74, 21);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "固件路径";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBoxRouteFramework
-            // 
-            this.textBoxRouteFramework.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxRouteFramework.Location = new System.Drawing.Point(83, 32);
-            this.textBoxRouteFramework.Name = "textBoxRouteFramework";
-            this.textBoxRouteFramework.Size = new System.Drawing.Size(436, 23);
-            this.textBoxRouteFramework.TabIndex = 15;
-            // 
-            // buttonBrowseFramework
-            // 
-            this.buttonBrowseFramework.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonBrowseFramework.Location = new System.Drawing.Point(525, 32);
-            this.buttonBrowseFramework.Name = "buttonBrowseFramework";
-            this.buttonBrowseFramework.Size = new System.Drawing.Size(75, 23);
-            this.buttonBrowseFramework.TabIndex = 29;
-            this.buttonBrowseFramework.Text = "浏览";
-            this.buttonBrowseFramework.UseVisualStyleBackColor = true;
-            this.buttonBrowseFramework.Click += new System.EventHandler(this.buttonBrowseDirFramework_Click);
-            // 
-            // buttonClearFramework
-            // 
-            this.buttonClearFramework.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonClearFramework.Location = new System.Drawing.Point(606, 32);
-            this.buttonClearFramework.Name = "buttonClearFramework";
-            this.buttonClearFramework.Size = new System.Drawing.Size(75, 23);
-            this.buttonClearFramework.TabIndex = 31;
-            this.buttonClearFramework.Text = "清除";
-            this.buttonClearFramework.UseVisualStyleBackColor = true;
-            this.buttonClearFramework.Click += new System.EventHandler(this.buttonClearDirFramework_Click);
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label20.Location = new System.Drawing.Point(3, 108);
+            this.label20.Location = new System.Drawing.Point(3, 52);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(683, 12);
             this.label20.TabIndex = 13;
@@ -929,7 +889,7 @@ namespace android_tool
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::android_tool.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 123);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 67);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 72);
             this.pictureBox1.TabIndex = 32;
@@ -939,7 +899,7 @@ namespace android_tool
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(3, 198);
+            this.label21.Location = new System.Drawing.Point(3, 142);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(42, 21);
             this.label21.TabIndex = 20;
@@ -949,7 +909,7 @@ namespace android_tool
             // textBoxUser
             // 
             this.textBoxUser.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxUser.Location = new System.Drawing.Point(3, 222);
+            this.textBoxUser.Location = new System.Drawing.Point(3, 166);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(168, 23);
             this.textBoxUser.TabIndex = 21;
@@ -958,7 +918,7 @@ namespace android_tool
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(3, 248);
+            this.label22.Location = new System.Drawing.Point(3, 192);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(42, 21);
             this.label22.TabIndex = 22;
@@ -968,7 +928,7 @@ namespace android_tool
             // textBoxPwd
             // 
             this.textBoxPwd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxPwd.Location = new System.Drawing.Point(3, 272);
+            this.textBoxPwd.Location = new System.Drawing.Point(3, 216);
             this.textBoxPwd.Name = "textBoxPwd";
             this.textBoxPwd.Size = new System.Drawing.Size(168, 23);
             this.textBoxPwd.TabIndex = 23;
@@ -977,7 +937,7 @@ namespace android_tool
             // 
             this.flowLayoutPanel7.Controls.Add(this.buttonLogin);
             this.flowLayoutPanel7.Controls.Add(this.buttonQuit);
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 301);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 245);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             this.flowLayoutPanel7.Size = new System.Drawing.Size(416, 43);
             this.flowLayoutPanel7.TabIndex = 31;
@@ -1008,7 +968,7 @@ namespace android_tool
             // 
             this.checkBoxLog.AutoSize = true;
             this.checkBoxLog.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLog.Location = new System.Drawing.Point(3, 350);
+            this.checkBoxLog.Location = new System.Drawing.Point(3, 294);
             this.checkBoxLog.Name = "checkBoxLog";
             this.checkBoxLog.Size = new System.Drawing.Size(75, 21);
             this.checkBoxLog.TabIndex = 26;
@@ -1020,7 +980,7 @@ namespace android_tool
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label23.Location = new System.Drawing.Point(3, 374);
+            this.label23.Location = new System.Drawing.Point(3, 318);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(683, 12);
             this.label23.TabIndex = 25;
@@ -1031,7 +991,7 @@ namespace android_tool
             // 
             this.flowLayoutPanel8.Controls.Add(this.pictureBox2);
             this.flowLayoutPanel8.Controls.Add(this.flowLayoutPanel9);
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 389);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 333);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Size = new System.Drawing.Size(681, 87);
             this.flowLayoutPanel8.TabIndex = 33;
@@ -1090,12 +1050,48 @@ namespace android_tool
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label30.Location = new System.Drawing.Point(3, 479);
+            this.label30.Location = new System.Drawing.Point(3, 423);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(683, 12);
             this.label30.TabIndex = 34;
             this.label30.Text = "---------------------------------------------------------------------------------" +
     "--------------------------------";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label18.Location = new System.Drawing.Point(3, 102);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 17);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "系统功能";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label32.Location = new System.Drawing.Point(3, 251);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(683, 12);
+            this.label32.TabIndex = 35;
+            this.label32.Text = "---------------------------------------------------------------------------------" +
+    "--------------------------------";
+            // 
+            // buttonExBuild
+            // 
+            this.buttonExBuild.Location = new System.Drawing.Point(3, 3);
+            this.buttonExBuild.Name = "buttonExBuild";
+            this.buttonExBuild.Size = new System.Drawing.Size(120, 120);
+            this.buttonExBuild.TabIndex = 36;
+            // 
+            // flowLayoutPanelSystem
+            // 
+            this.flowLayoutPanelSystem.Controls.Add(this.buttonExBuild);
+            this.flowLayoutPanelSystem.Location = new System.Drawing.Point(3, 122);
+            this.flowLayoutPanelSystem.Name = "flowLayoutPanelSystem";
+            this.flowLayoutPanelSystem.Size = new System.Drawing.Size(200, 126);
+            this.flowLayoutPanelSystem.TabIndex = 37;
             // 
             // FormMain
             // 
@@ -1107,7 +1103,7 @@ namespace android_tool
             this.Controls.Add(this.tabControlEx1);
             this.Controls.Add(this.label14);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1117,8 +1113,8 @@ namespace android_tool
             this.Text = "安助手V1.0";
             this.tabControlEx1.ResumeLayout(false);
             this.tabPageState.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanelHome.ResumeLayout(false);
+            this.flowLayoutPanelHome.PerformLayout();
             this.flowLayoutPanel10.ResumeLayout(false);
             this.flowLayoutPanel11.ResumeLayout(false);
             this.tabPageFlash.ResumeLayout(false);
@@ -1146,6 +1142,7 @@ namespace android_tool
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanelSystem.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1160,7 +1157,7 @@ namespace android_tool
         private System.Windows.Forms.TabPage tabPageApp;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHome;
         private ButtonEx buttonExRemount;
         private ButtonEx buttonExFastReboot;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
@@ -1190,8 +1187,6 @@ namespace android_tool
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBoxRouteFramework;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBoxImgRoute;
         private System.Windows.Forms.Label label20;
@@ -1203,8 +1198,6 @@ namespace android_tool
         private System.Windows.Forms.CheckBox checkBoxLog;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.Button buttonBrowseFramework;
-        private System.Windows.Forms.Button buttonClearFramework;
         private System.Windows.Forms.Button buttonBrowseImg;
         private System.Windows.Forms.Button buttonClearImg;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
@@ -1246,6 +1239,10 @@ namespace android_tool
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSystem;
+        private ButtonEx buttonExBuild;
+        private System.Windows.Forms.Label label32;
     }
 }
 

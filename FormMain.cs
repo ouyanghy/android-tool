@@ -7,8 +7,6 @@ namespace android_tool
 {
     public partial class FormMain : Form, InterfaceOutput, InterfaceResult
     {
-
-        private static String PATH_FRAMEWORK = "";
         private static String PATH_IMG = "";
 
         const int WM_SYSCOMMAND = 0x0112;
@@ -92,6 +90,10 @@ namespace android_tool
             buttonExPower.setButtonClick(new Enums.ptr_func_flash(buttonExPower_Click));
             buttonExPower.setBitmap(Enums.PNG.KEY);
 
+            buttonExBuild.setText(Enums.ButtonName.BUILD_ID);
+            buttonExBuild.setButtonClick(new Enums.ptr_func_flash(buttonExBuild_Click));
+            buttonExBuild.setBitmap(Enums.PNG.BUILD);
+
             tabControlEx1.setTagName();
 
             searchEx1.setFunc(buttonSearch);
@@ -105,7 +107,7 @@ namespace android_tool
             panel.FlowDirection = FlowDirection.TopDown;
             panel.WrapContents = false;
             panel.HorizontalScroll.Maximum = 0; // 把水平滚动范围设成0就看不到水平滚动条了
-            flowLayoutPanel1.AutoScroll = true; // 注意启用滚动的顺序，应是完成设置的最后一条语句
+            panel.AutoScroll = true; // 注意启用滚动的顺序，应是完成设置的最后一条语句
         }
 
         public void initProgressBar()
@@ -136,15 +138,12 @@ namespace android_tool
                 textBoxPwd.Text = "*******";
 
             }
-            String path = mInfo.getPathFramework();
-            if (path != null)
-                textBoxRouteFramework.Text = path;
+            String imgPath = mInfo.getPathImg();
+            if (imgPath != null)
+                textBoxImgRoute.Text = imgPath;
 
-            path = mInfo.getPathImg();
-            if (path != null)
-                textBoxImgRoute.Text = path;
+            mInfo.startListenTextBoxChange(textBoxImgRoute);
 
-            mInfo.startListenTextBoxChange(textBoxImgRoute, textBoxRouteFramework);
         }
 
         public FormMain()
@@ -165,6 +164,7 @@ namespace android_tool
             mDeviceState.start();
 
             setFlowPanelScroll(panelPage4);
+            //setFlowPanelScroll(flowLayoutPanelHome);
             //setFlowPanelScroll(panel)
             new PanelComponet(panelApp, panelFrameware, mCmd, mThreadCmd, mProgressBarApp);
             mScreen = new ScreenCtrl(mCmd, pictureBoxScreen);
@@ -290,36 +290,6 @@ namespace android_tool
                 mThreadCmd.startCmdInstallThread(dialog.FileName, mProgressBarApp);
             }
         }
-
-
-        private String getFramewarePath()
-        {
-            String s = textBoxRouteFramework.Text;
-            if (s.Substring(s.Length - 1).Equals(@"\"))
-                return s;
-            return s + @"\";
-        }
-        private void buttonExFrameware_Click(object sender, EventArgs e)
-        {
-            bool adbState = mCmd.excuteCmdGetAdbState();
-            if (!adbState)
-            {
-                MessageBox.Show(Enums.Error.ADB, Enums.Title.ERROR);
-                return;
-            }
-
-            CmdOption option = new CmdOption(2);
-            PATH_FRAMEWORK = getFramewarePath();
-            option.path[0] = PATH_FRAMEWORK + Enums.AndroidPath.SYSTEM_FRAMEWORK + Enums.UpdateFileName.FRAMEWORK2_JAR;
-            option.dst[0] = Enums.AndroidPath.SYSTEM_FRAMEWORK + Enums.UpdateFileName.FRAMEWORK2_JAR;
-            option.permission[0] = Enums.LinuxPermission.NO_CHANGE;
-            option.path[1] = PATH_FRAMEWORK + @Enums.AndroidPath.SYSTEM_FRAMEWORK + Enums.UpdateFileName.FRAMEWORK2_JAR;
-            option.dst[1] = Enums.AndroidPath.SYSTEM_FRAMEWORK + Enums.UpdateFileName.FRAMEWORK2_JAR;
-            option.permission[1] = Enums.LinuxPermission.NO_CHANGE;
-
-            mThreadCmd.startCmdUpdateThread(option, mProgressBarUpdate);
-        }
-
 
         private void buttonExBuild_Click(object sender, EventArgs e)
         {
@@ -582,15 +552,6 @@ namespace android_tool
 
 
 
-        private void buttonBrowseDirFramework_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                textBoxRouteFramework.Text = dialog.SelectedPath;
-            }
-        }
-
         private void buttonBrowseDirImg_Click(object sender, EventArgs e)
         {
 
@@ -598,13 +559,11 @@ namespace android_tool
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBoxImgRoute.Text = dialog.SelectedPath;
+            //    mInfo.savePathInfo(textBoxImgRoute.Text, "null");
+
             }
         }
 
-        private void buttonClearDirFramework_Click(object sender, EventArgs e)
-        {
-            textBoxRouteFramework.Text = "";
-        }
 
         private void buttonClearDirImg_Click(object sender, EventArgs e)
         {
@@ -731,7 +690,7 @@ namespace android_tool
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void buttonHome_Click(object sender, EventArgs e)

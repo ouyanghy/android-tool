@@ -10,14 +10,12 @@ namespace android_tool
     {
         private String PATH = Environment.CurrentDirectory + @"\";
         private String PATH_IMG;
-        private String PATH_FRAMEWORK;
         private Thread mThreadListenTextBox;
-        private TextBox mTextImg, mTextFramework;
+        private TextBox mTextImg;
         private bool bWork = true;
         public UserInfo()
         {
-            PATH_IMG = getPathImg(); ;
-            PATH_FRAMEWORK = getPathFramework();
+            PATH_IMG = getPathImg() ;
         }
 
         public bool checkUserInfo(String usr, String pwd)
@@ -144,7 +142,9 @@ namespace android_tool
             return System.Text.Encoding.Default.GetString(bs);
         }
 
-        public String getPathFramework()
+     
+
+        public String getPathImg()
         {
             String info = loadPathInfo();
             if (info == null)
@@ -157,23 +157,9 @@ namespace android_tool
                 return null;
         }
 
-        public String getPathImg()
-        {
-            String info = loadPathInfo();
-            if (info == null)
-                return null;
-
-            String[] s = info.Split(',');
-            if (s.Length > 1)
-                return s[1];
-            else
-                return null;
-        }
-
-        public void startListenTextBoxChange(TextBox textImg, TextBox textFramework)
+        public void startListenTextBoxChange(TextBox textImg)
         {
             mTextImg = textImg;
-            mTextFramework = textFramework;
             mThreadListenTextBox = new Thread(threadListen);
             mThreadListenTextBox.Start();
         }
@@ -181,20 +167,15 @@ namespace android_tool
         private void threadListen()
         {
             bool retImg = false;
-            bool retFramework = false;
             while (bWork)
             {
                 retImg = PATH_IMG.Equals(mTextImg.Text);
+                //Console.WriteLine("img:" + PATH_IMG + " text:"+ mTextImg.Text + " bool:" + retImg);
                 if (retImg == false)
+                {
                     PATH_IMG = mTextImg.Text;
-
-                retFramework = PATH_FRAMEWORK.Equals(mTextFramework.Text);
-                if (retFramework == false)
-                    PATH_FRAMEWORK = mTextFramework.Text;
-
-                if ((retFramework & retImg) == false)
-                    savePathInfo(PATH_IMG, PATH_FRAMEWORK);
-
+                    savePathInfo(PATH_IMG, "null");
+                }
                 Thread.Sleep(1000);
             }
 
